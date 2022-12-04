@@ -17,3 +17,21 @@
 <!-- 🐨 Append the div to the root div using `append` -->
 <!--   💰 document.getElementById('root') -->
 <!--   📜 https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append -->
+
+<!--   💯 Extra Credit Generate the root node   -->
+<!--   Rather than having the 'root' node in HTML, use JS to create it aswell   -->
+
+<body>
+    <script type="module">
+        // Extra Credits Challenge Solution
+        const rootNode = document.createElement( 'div' ) // create a div to be the root node
+        rootNode.setAttribute( 'id', 'root' ) // set the id of the root node to 'root'
+        document.body.append( rootNode ) // append the root node to the body
+
+        // Exercise 01 Challenge Solution
+        const div = document.createElement( 'div' ) // create a div
+        div.textContent = 'Hello World' // set the div's textContent to 'Hello World'
+        div.className = 'container' // set the div's className to 'container'
+        document.getElementById( 'root' ).append( div ) // append the div to the root div
+    </script>
+</body>
