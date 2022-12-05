@@ -21,7 +21,10 @@
     //   children: 'Hello World',
     // } )
 
-    <div className="container">Hello World</div> // 💰 this is the JSX equivalent of the React.createElement code above
+    // Extra Credit 1: 💯 Interpolate className and children
+    const divClassName = 'container'
+    const divChildrenText = 'Hello World'
+    const divElement = <div className={ divClassName }>{ divChildrenText }</div> // 💰 this is the JSX equivalent of the React.createElement code above
 
     // 💰 there are a few subtle differences between JSX and HTML. One such
     // difference is how you apply a class to an element in JSX is by using
@@ -29,6 +32,6 @@
     // 📜 You can learn the differences between JSX and HTML syntax from the React docs here:
     // https://reactjs.org/docs/dom-elements.html#differences-in-attributes
 
-    ReactDOM.createRoot( document.getElementById( 'root' ) ).render( element )
+    ReactDOM.createRoot( document.getElementById( 'root' ) ).render( divElement )
   </script>
 </body>
