@@ -24,9 +24,15 @@
 
     // 🐨 Please re-implement the regular document.createElement code above
     // with these React API calls
-    const props = { children: 'Hello World', className: 'container' } // create a props object with the children and className props
     const div = 'div' // create a div variable with the value 'div' (this is the type of element we want to create)
-    const element = React.createElement( div, props ) // create the element using React.createElement and use the div and props variables as the arguments
+    const element = React.createElement( div, {
+      className: 'container', // set the div's className to 'container'
+      children:
+        [
+          React.createElement( 'span', null, 'Hello ' ), // create a span element with the text 'Hello '
+          React.createElement( 'span', null, 'World' ) // create a span element with the text 'World'
+        ]
+    } ) // create a React element with the type of div, the props of className and children, and the children of span and span
     const root = ReactDOM.createRoot( rootElement ) // create the root using ReactDOM.createRoot and use the rootElement variable as the argument
     root.render( element ) // render the element using the root variable
 
