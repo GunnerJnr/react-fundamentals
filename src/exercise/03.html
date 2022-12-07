@@ -24,7 +24,7 @@
     // Extra Credit 2: 💯 Spread props
     const divClassName = 'container'
     const divChildrenText = 'Hello World'
-    const props = { className: divClassName, children: divChildrenText }
+    const props = {className: divClassName, children: divChildrenText}
     const divElement = <div {...props} /> // 💰 this is the JSX equivalent of the React.createElement code above
 
     // 💰 there are a few subtle differences between JSX and HTML. One such
@@ -33,6 +33,6 @@
     // 📜 You can learn the differences between JSX and HTML syntax from the React docs here:
     // https://reactjs.org/docs/dom-elements.html#differences-in-attributes
 
-    ReactDOM.createRoot( document.getElementById( 'root' ) ).render( divElement )
+    ReactDOM.createRoot(document.getElementById('root')).render(divElement)
   </script>
 </body>
