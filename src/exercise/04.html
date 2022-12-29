@@ -12,18 +12,15 @@
       return <div className="message">{children}</div>
     }
 
-    // 🐨 use that function in place of the divs below with:
-    // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
-
     // 💯 Extra Credit 02 - using a custom component with JSX
     // We're so close! Just like using JSX for regular divs is nicer than using the raw React.createElement API, using JSX for custom components is nicer too.
     // Remember that it's Babel that's responsible for taking our JSX and compiling it to React.createElement calls so we just need a way to tell Babel how to compile our JSX so it passes the function by its name rather than a string.
     // See if you can change your component function name so people can use it with JSX more easily!
     const element = (
       <div className="container">
-        <Message>Hello World!</Message>{' '}
+        <Message>Hello World!</Message>
         {/* 💰 this is the JSX equivalent of the React.createElement code above*/}
-        <Message>Goodbye World!</Message>{' '}
+        <Message>Goodbye World!</Message>
         {/* 💰 this is the JSX equivalent of the React.createElement code above*/}
       </div>
     )
