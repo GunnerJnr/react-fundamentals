@@ -5,45 +5,36 @@
   <div id="root"></div>
   <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  <!-- 💯 Extra Credit 04 - Use the prop-types package -->
+  <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   <script type="text/babel">
     // 🐨 Make a function called `message` which returns the JSX we want to share
     function Message({subject, greeting}) {
       return (
         <div className="message">
-          {subject}, {greeting}
+          {greeting}, {subject}
         </div>
       )
     }
 
-    // here we will use propTypes to validate the props passed to the above function
-    const propTypes = {
-      string(props, propName, componentName) {
-        if (typeof props[propName] !== 'string') {
-          return new Error(
-            `Invalid prop ${propName} supplied to ${componentName}. Expected string, got ${typeof props[
-              propName
-            ]}`,
-          )
-        }
-      },
-    }
-
+    // 💯 Extra Credit 04 - Validate the props passed to the above function Message
     Message.propTypes = {
-      subject: propTypes.string,
-      greeting: propTypes.string,
+      subject: PropTypes.string.isRequired,
+      greeting: PropTypes.string.isRequired,
     }
 
-    // 💯 Extra Credit 03 - Runtime validation with PropTypes
-    // For this extra credit, add propTypes support to your updated component (remember to update it to have the subject and greeting).
-    // 🦉 Note that prop types validation add some runtime overhead resulting in sub-optimal performance, so the validation functions are not run in production.
+    // 💯 Extra Credit 04 - Use the prop-types package
+    // As it turns out, there are some pretty common things you'd want to validate, so the React team maintains a package of these called prop-types.
+    // Go ahead and get that added to the page by adding a script tag for it. Then use that package instead of writing it yourself. Also, make use of the isRequired feature!
     const element = (
       <div className="container">
-        {/* Purposely set a greeting as a number to test the validation is working */}
-        {/* We can clarify in the google console we get the following errorMessage:*/}
-        {/* Warning: Failed prop type: Invalid prop greeting supplied to Message. Expected string, got number at Message (<anonymous>:7:22) */}
-        <Message greeting={128} subject="World!" />
-        <Message greeting="Goodbye" subject="World!" />
+        {/* Purposely set a greeting as a number and purposely forget a greeting to test that the validation is working */}
+        {/* We can clarify in the google console we get the following error Messages:*/}
+        {/* Warning: Failed prop type: Invalid prop `greeting` of type `number` supplied to `Message`, expected `string`. at Message (<anonymous>:5:22) */}
+        {/* Warning: Failed prop type: The prop `greeting` is marked as required in `Message`, but its value is `undefined`. at Message (<anonymous>:5:22) */}
+        <Message greeting={1284325453} subject="World!" />
+        <Message subject="World!" />
       </div>
     )
 
