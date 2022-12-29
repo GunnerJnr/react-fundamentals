@@ -5,7 +5,6 @@
   <div id="root"></div>
   <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
-  <!-- 💯 Extra Credit 04 - Use the prop-types package -->
   <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   <script type="text/babel">
@@ -18,24 +17,21 @@
       )
     }
 
-    // 💯 Extra Credit 04 - Validate the props passed to the above function Message
     Message.propTypes = {
       subject: PropTypes.string.isRequired,
       greeting: PropTypes.string.isRequired,
     }
 
-    // 💯 Extra Credit 04 - Use the prop-types package
-    // As it turns out, there are some pretty common things you'd want to validate, so the React team maintains a package of these called prop-types.
-    // Go ahead and get that added to the page by adding a script tag for it. Then use that package instead of writing it yourself. Also, make use of the isRequired feature!
+    // 💯 Extra Credit 05 - using React Fragments
+    // One feature of JSX that you'll find useful is called "React Fragments".
+    // It's a special kind of component from React which allows you to position two elements side-by-side rather than just nested.
+    // The component is available via <React.Fragment> (or a short syntax that opens with <> and closes with </>).
+    // Replace the <div className="container"> with a fragment and inspect the DOM to notice that the elements are both rendered as direct children of root.
     const element = (
-      <div className="container">
-        {/* Purposely set a greeting as a number and purposely forget a greeting to test that the validation is working */}
-        {/* We can clarify in the google console we get the following error Messages:*/}
-        {/* Warning: Failed prop type: Invalid prop `greeting` of type `number` supplied to `Message`, expected `string`. at Message (<anonymous>:5:22) */}
-        {/* Warning: Failed prop type: The prop `greeting` is marked as required in `Message`, but its value is `undefined`. at Message (<anonymous>:5:22) */}
-        <Message greeting={1284325453} subject="World!" />
-        <Message subject="World!" />
-      </div>
+      <>
+        <Message greeting="Hello" subject="World!" />
+        <Message greeting="Goodbye" subject="World!" />
+      </>
     )
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
