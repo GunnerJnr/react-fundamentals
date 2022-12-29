@@ -8,20 +8,42 @@
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   <script type="text/babel">
     // 🐨 Make a function called `message` which returns the JSX we want to share
-    function Message({children}) {
-      return <div className="message">{children}</div>
+    function Message({subject, greeting}) {
+      return (
+        <div className="message">
+          {subject}, {greeting}
+        </div>
+      )
     }
 
-    // 💯 Extra Credit 02 - using a custom component with JSX
-    // We're so close! Just like using JSX for regular divs is nicer than using the raw React.createElement API, using JSX for custom components is nicer too.
-    // Remember that it's Babel that's responsible for taking our JSX and compiling it to React.createElement calls so we just need a way to tell Babel how to compile our JSX so it passes the function by its name rather than a string.
-    // See if you can change your component function name so people can use it with JSX more easily!
+    // here we will use propTypes to validate the props passed to the above function
+    const propTypes = {
+      string(props, propName, componentName) {
+        if (typeof props[propName] !== 'string') {
+          return new Error(
+            `Invalid prop ${propName} supplied to ${componentName}. Expected string, got ${typeof props[
+              propName
+            ]}`,
+          )
+        }
+      },
+    }
+
+    Message.propTypes = {
+      subject: propTypes.string,
+      greeting: propTypes.string,
+    }
+
+    // 💯 Extra Credit 03 - Runtime validation with PropTypes
+    // For this extra credit, add propTypes support to your updated component (remember to update it to have the subject and greeting).
+    // 🦉 Note that prop types validation add some runtime overhead resulting in sub-optimal performance, so the validation functions are not run in production.
     const element = (
       <div className="container">
-        {/* 💰 this is the JSX equivalent of the React.createElement code above*/}
-        <Message>Hello World!</Message>
-        {/* 💰 this is the JSX equivalent of the React.createElement code above*/}
-        <Message>Goodbye World!</Message>
+        {/* Purposely set a greeting as a number to test the validation is working */}
+        {/* We can clarify in the google console we get the following errorMessage:*/}
+        {/* Warning: Failed prop type: Invalid prop greeting supplied to Message. Expected string, got number at Message (<anonymous>:7:22) */}
+        <Message greeting={128} subject="World!" />
+        <Message greeting="Goodbye" subject="World!" />
       </div>
     )
 
