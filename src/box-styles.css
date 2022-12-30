@@ -5,6 +5,10 @@
   justify-content: center;
   text-align: center;
 }
+.box--extralarge {
+  width: 360px;
+  height: 360px;
+}
 .box--large {
   width: 270px;
   height: 270px;

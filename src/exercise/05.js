@@ -4,15 +4,20 @@
 import * as React from 'react'
 import '../box-styles.css'
 
-// 🐨 add a className prop to each div and apply the correct class names
-// based on the text content
-// 💰 Here are the available class names: box, box--large, box--medium, box--small
-// 💰 each of the elements should have the "box" className applied
-
-// 🐨 add a style prop to each div so their background color
-// matches what the text says it should be
-// 🐨 also use the style prop to make the font italic
-// 💰 Here are available style attributes: backgroundColor, fontStyle
+// Extra credit 01: 💯 Create a custom component
+// Make a custom <Box /> component that renders a div, accepts all the props and merges the given style and className props with the shared values.
+// I should be able to use it like so:
+// <Box className="box--small" style={{backgroundColor: 'lightblue'}}>small lightblue box</Box>
+// The box className and fontStyle: 'italic' style should be applied in addition to the values that come from props.
+function Box({className, style, ...otherProps}) {
+  return (
+    <div
+      className={`box ${className}`}
+      style={{fontStyle: 'italic', ...style}}
+      {...otherProps}
+    />
+  )
+}
 
 const lightBlueWithItalicFont = {
   backgroundColor: 'lightblue',
@@ -24,6 +29,10 @@ const pinkWithItalicFont = {
 }
 const orangeWithItalicFont = {
   backgroundColor: 'orange',
+  fontStyle: 'italic',
+}
+const lightGreenWithItalicFont = {
+  backgroundColor: 'lightgreen',
   fontStyle: 'italic',
 }
 
@@ -43,12 +52,19 @@ const largeBox = (
   </div>
 )
 
+const customBox = (
+  <Box className="box--extralarge" style={lightGreenWithItalicFont}>
+    Other Box from Custom Component
+  </Box>
+)
+
 function App() {
   return (
     <div>
       {smallBox}
       {mediumBox}
       {largeBox}
+      {customBox}
     </div>
   )
 }
