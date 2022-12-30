@@ -4,15 +4,13 @@
 import * as React from 'react'
 import '../box-styles.css'
 
-// Extra credit 01: 💯 Create a custom component
-// Make a custom <Box /> component that renders a div, accepts all the props and merges the given style and className props with the shared values.
-// I should be able to use it like so:
-// <Box className="box--small" style={{backgroundColor: 'lightblue'}}>small lightblue box</Box>
-// The box className and fontStyle: 'italic' style should be applied in addition to the values that come from props.
-function Box({className = '', style, ...otherProps}) {
+// Extra credit 02: 💯 accept a size prop to encapsulate styling
+// In this extra credit, try to make this API work:
+// <Box size="small" style={{backgroundColor: 'lightblue'}}>small lightblue box</Box>
+function Box({size='none', style, ...otherProps}) {
   return (
     <div
-      className={`box ${className}`}
+      className={`box box--${size}`}
       style={{fontStyle: 'italic', ...style}}
       {...otherProps}
     />
@@ -33,23 +31,23 @@ const lightgreen = {
 }
 
 const smallBox = (
-  <Box className="box box--small" style={lightblue}>
+  <Box size="small" style={lightblue}>
     small lightblue box
   </Box>
 )
 const mediumBox = (
-  <Box className="box box--medium" style={pink}>
+  <Box size="medium" style={pink}>
     medium pink box
   </Box>
 )
 const largeBox = (
-  <Box className="box box--large" style={orange}>
+  <Box size="large" style={orange}>
     large orange box
   </Box>
 )
 
 const customBox = (
-  <Box className="box--extralarge" style={lightgreen}>
+  <Box size="extralarge" style={lightgreen}>
     Other Box from Custom Component
   </Box>
 )
