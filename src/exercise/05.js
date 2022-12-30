@@ -7,10 +7,11 @@ import '../box-styles.css'
 // Extra credit 02: 💯 accept a size prop to encapsulate styling
 // In this extra credit, try to make this API work:
 // <Box size="small" style={{backgroundColor: 'lightblue'}}>small lightblue box</Box>
-function Box({size='none', style, ...otherProps}) {
+function Box({className='', size, style, ...otherProps}) {
+  const sizeClassname = size ? `box--${size}` : `box--size-none`
   return (
     <div
-      className={`box box--${size}`}
+      className={`box ${className} ${sizeClassname}`}
       style={{fontStyle: 'italic', ...style}}
       {...otherProps}
     />
