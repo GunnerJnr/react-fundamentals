@@ -9,7 +9,7 @@ import '../box-styles.css'
 // I should be able to use it like so:
 // <Box className="box--small" style={{backgroundColor: 'lightblue'}}>small lightblue box</Box>
 // The box className and fontStyle: 'italic' style should be applied in addition to the values that come from props.
-function Box({className, style, ...otherProps}) {
+function Box({className = '', style, ...otherProps}) {
   return (
     <div
       className={`box ${className}`}
@@ -19,41 +19,37 @@ function Box({className, style, ...otherProps}) {
   )
 }
 
-const lightBlueWithItalicFont = {
+const lightblue = {
   backgroundColor: 'lightblue',
-  fontStyle: 'italic',
 }
-const pinkWithItalicFont = {
+const pink = {
   backgroundColor: 'pink',
-  fontStyle: 'italic',
 }
-const orangeWithItalicFont = {
+const orange = {
   backgroundColor: 'orange',
-  fontStyle: 'italic',
 }
-const lightGreenWithItalicFont = {
+const lightgreen = {
   backgroundColor: 'lightgreen',
-  fontStyle: 'italic',
 }
 
 const smallBox = (
-  <div className="box box--small" style={lightBlueWithItalicFont}>
+  <Box className="box box--small" style={lightblue}>
     small lightblue box
-  </div>
+  </Box>
 )
 const mediumBox = (
-  <div className="box box--medium" style={pinkWithItalicFont}>
+  <Box className="box box--medium" style={pink}>
     medium pink box
-  </div>
+  </Box>
 )
 const largeBox = (
-  <div className="box box--large" style={orangeWithItalicFont}>
+  <Box className="box box--large" style={orange}>
     large orange box
-  </div>
+  </Box>
 )
 
 const customBox = (
-  <Box className="box--extralarge" style={lightGreenWithItalicFont}>
+  <Box className="box--extralarge" style={lightgreen}>
     Other Box from Custom Component
   </Box>
 )
@@ -65,6 +61,7 @@ function App() {
       {mediumBox}
       {largeBox}
       {customBox}
+      <Box>Sizeless Box</Box>
     </div>
   )
 }
