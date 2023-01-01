@@ -34,6 +34,7 @@ function UsernameForm({onSubmitUsername}) {
     event.preventDefault()
     const username = userInputRef.current.value
     onSubmitUsername(username)
+    userInputRef.current.value = '' // reset the input value to an empty string after the user has submitted their entry to the form
   }
 
   return (
