@@ -24,7 +24,7 @@ function UsernameForm({onSubmitUsername}) {
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="usernameInput">Username:</label>
-        <input id="usernameInput" type="text" ref={userInputRef} />
+        <input id="usernameInput" type="text" ref={userInputRef} /> {/* Extra Credit 01: 💯 using refs */}
       </div>
       <button type="submit">Submit</button>
     </form>
