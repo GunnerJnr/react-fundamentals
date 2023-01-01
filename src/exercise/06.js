@@ -4,32 +4,27 @@
 import * as React from 'react'
 
 function UsernameForm({onSubmitUsername}) {
-  // 🐨 add a submit event handler here (`handleSubmit`).
-  // 💰 Make sure to accept the `event` as an argument and call
-  // `event.preventDefault()` to prevent the default behavior of form submit
-  // events (which refreshes the page).
-  // 📜 https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
-  //
-  // 🐨 get the value from the username input (using whichever method
-  // you prefer from the options mentioned in the instructions)
-  // 💰 For example: event.target.elements[0].value
-  // 🐨 Call `onSubmitUsername` with the value of the input
+  /*
+   * Extra Credit 01: 💯 using refs
+   * Another way to get the value is via a ref in React. A ref is an object that stays consistent between renders of your React component.
+   * It has a current property on it which can be updated to any value at any time.
+   * In the case of interacting with DOM nodes, you can pass a ref to a React element and React will set the current property to the DOM node that's rendered.
+   * So if you create an inputRef object via React.useRef, you could access the value via: inputRef.current.value (📜https://reactjs.org/docs/hooks-reference.html#useref)
+   * Try to get the usernameInput's value using a ref.
+   */
+  const userInputRef = React.useRef() // Extra Credit 01: 💯 using refs
 
   function handleSubmit(event) {
     event.preventDefault()
-    const username = event.target.elements[0].value
+    const username = userInputRef.current.value // Extra Credit 01: 💯 using refs
     onSubmitUsername(username)
   }
 
-  // 🐨 add the onSubmit handler to the <form> below
-
-  // 🐨 make sure to associate the label to the input.
-  // to do so, set the value of 'htmlFor' prop of the label to the id of input
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="usernameInput">Username:</label>
-        <input id="usernameInput" type="text" />
+        <input id="usernameInput" type="text" ref={userInputRef} />
       </div>
       <button type="submit">Submit</button>
     </form>
